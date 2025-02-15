@@ -1,4 +1,6 @@
 import methods.FillObjMatriz;
+import methods.ShowObjMatriz;
+import objects.Person;
 
 import java.util.Scanner;
 
@@ -20,7 +22,12 @@ public class Main {
 
 
         }
+        System.out.println("Ingrese la dimension de la matriz");
+        int dimention = sc.nextInt();
+        sc.nextLine();
         FillObjMatriz a = new FillObjMatriz();
-        a.fillMatriz(1,sc);
+        Person[][] matriz = a.fillMatriz(dimention,sc);
+        ShowObjMatriz showObjMatriz = new ShowObjMatriz();
+        showObjMatriz.ShowObjetualMatriz(matriz);
     }
 }
