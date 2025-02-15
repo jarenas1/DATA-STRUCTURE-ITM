@@ -1,11 +1,13 @@
 package objects;
 
+import methods.FillObjMatriz;
+
 public class Person {
     private String name;
     private String lastname;
     private String address;
     private Long phone;
-    //we´re using Long because Int Type only accpets 7 characters as maxi
+    //we´re using Long because Int Type just accept 7 characters as maxi
 
 
     public Person(String name, String lastname, String address, Long phone) {
