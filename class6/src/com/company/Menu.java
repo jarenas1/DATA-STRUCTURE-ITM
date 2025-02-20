@@ -17,14 +17,16 @@ public class Menu {
                 System.out.println("Dato incorrecto");
                 sc.next();
             }
+            option = sc.nextInt();
             switch (option){
                 case 1:
-                    //1
+                    System.out.println("Option 1");
                     break;
                 case 2:
-                    //2
+                    System.out.println("Option 2");
                     break;
                 case 3:
+                    System.out.println("Option 3");
                     cicle = false;
                     break;
                 default:
