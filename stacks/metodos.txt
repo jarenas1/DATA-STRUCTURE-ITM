@@ -1,0 +1,14 @@
+Un stcak o pila, sigue el principio LIFO
+
+El ultimo elemento que entra es el primero en salir
+
+push(E item): Añade un elemento a la pila
+
+Pop(): Elimina y devuelve el ultimo elemento añadido a la lista
+
+peek(): Devuelve el ultimo elemento de la lista
+(Si la pila esta vacia lanza una expecion)
+
+empty(): dice si esta vacia(devuelve true si si)
+
+seach(Object o)
