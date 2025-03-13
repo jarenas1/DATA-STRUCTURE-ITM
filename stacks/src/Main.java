@@ -7,5 +7,6 @@ public class Main {
         System.out.println("AA");
         Methods m = new Methods();
         m.fillStack();
+
     }
 }

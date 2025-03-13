@@ -2,6 +2,7 @@ package services;
 
 import Entities.VehicleEntity;
 
+import java.awt.*;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -37,6 +38,7 @@ public class Methods {
             }
         }
         showStack(vehicleEntityStack);
+        deleteItem(scanner, vehicleEntityStack);
         return vehicleEntityStack;
     }
 
@@ -45,5 +47,23 @@ public class Methods {
             System.out.println(car.toString());
             System.out.println("      ");
         });
+    }
+
+    public void deleteItem(Scanner sc, Stack<VehicleEntity> stack){
+        System.out.println("Ingrese el nombre del vehiculo a borrar");
+        String carName = scanner.nextLine();
+        VehicleEntity vehicleEntity = new VehicleEntity();
+        for(VehicleEntity vehicle : stack){
+            if (vehicle.getModel().equalsIgnoreCase(carName)){
+                vehicleEntity = vehicle;
+            }
+        }
+        if (stack.remove(vehicleEntity)){
+            System.out.println("Vehiculo "+ carName + " fue borrado");
+        }else{
+            System.out.println("Vehiculo no encontrado");
+        }
+
+        showStack(stack);
     }
 }
