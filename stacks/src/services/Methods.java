@@ -39,6 +39,11 @@ public class Methods {
         }
         showStack(vehicleEntityStack);
         deleteItem(scanner, vehicleEntityStack);
+        System.out.println("Ingrese el nombre del vehiculo a buscar");
+        String carName = scanner.nextLine();
+        findByModel(carName, vehicleEntityStack);
+        update(scanner, vehicleEntityStack);
+
         return vehicleEntityStack;
     }
 
@@ -52,18 +57,51 @@ public class Methods {
     public void deleteItem(Scanner sc, Stack<VehicleEntity> stack){
         System.out.println("Ingrese el nombre del vehiculo a borrar");
         String carName = scanner.nextLine();
-        VehicleEntity vehicleEntity = new VehicleEntity();
-        for(VehicleEntity vehicle : stack){
-            if (vehicle.getModel().equalsIgnoreCase(carName)){
-                vehicleEntity = vehicle;
-            }
-        }
+        VehicleEntity vehicleEntity = findByModel(carName, stack);
         if (stack.remove(vehicleEntity)){
             System.out.println("Vehiculo "+ carName + " fue borrado");
         }else{
             System.out.println("Vehiculo no encontrado");
         }
-
         showStack(stack);
+    }
+
+    public Stack<VehicleEntity> update(Scanner sc, Stack<VehicleEntity> stack){
+        System.out.println("Imgrese el nombre del vehiculo que desea modificar");
+        String oldModel = sc.nextLine();
+        System.out.println("Buscando...");
+        VehicleEntity toUpdateObject = findByModel(oldModel, stack);
+
+        System.out.println("Ingrese el nuevo modelo del vehiculo");
+        String newModel = sc.nextLine();
+        System.out.println("Ingrese la nueva marca del vehiculo");
+        String newBrand = sc.nextLine();
+        System.out.println("Ingrese el nuevo precio del vehiculo");
+        Double newPrice = sc.nextDouble();
+        sc.nextLine();
+
+        for (VehicleEntity vehicle : stack){
+            if (vehicle == toUpdateObject){
+                vehicle.setModel(newModel);
+                vehicle.setBrand(newBrand);
+                vehicle.setPrice(newPrice);
+            }
+        }
+        showStack(stack);
+        return stack;
+
+    }
+
+    public VehicleEntity findByModel(String carName, Stack<VehicleEntity> stack){
+        VehicleEntity vehicleEntity = new VehicleEntity();
+        for(VehicleEntity vehicle : stack){
+            if (vehicle.getModel().equalsIgnoreCase(carName)){
+                vehicleEntity = vehicle;
+            }
+            else {
+                System.out.println("Vehiculo no encontrado");
+            }
+        }
+        return vehicleEntity;
     }
 }
